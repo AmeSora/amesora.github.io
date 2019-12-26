@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CMU 15645 Data Storage(1)]]></title>
+    <url>%2F2019%2F12%2F26%2FCMU%2015645%20Data%20Storage(1)%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Database System</category>
+      </categories>
+      <tags>
+        <tag>CMU 15645</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CMU 15645|Data Storage(1)]]></title>
+    <url>%2F2019%2F12%2F26%2FCMU%2015645%3A%20Data%20Storage(1)%2F</url>
+    <content type="text"><![CDATA[1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别： 易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存，其他如CPU cache等） 非易失性设备：不必持续供电来存储数据（即数据不会因为断电而丢失），通常是按块/页寻址的。因此想要读入某处地址的数据，就必须同时读取所在的整块/页的数据。通常是顺序访问的（即不可以随机访问）。这里通常用它指代磁盘。 ​]]></content>
+      <categories>
+        <category>Database System</category>
+      </categories>
+      <tags>
+        <tag>CMU 15645</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[读Paper|DeepFool算法简介]]></title>
     <url>%2F2019%2F08%2F27%2F%E8%AF%BBPaper-DeepFool%E7%AE%97%E6%B3%95%E7%AE%80%E4%BB%8B%2F</url>
     <content type="text"><![CDATA[概述​ DeepFool也是一种基于梯度的白盒攻击算法（与FGSM类似），由Seyed-Mohsen Moosavi-Dezfooli等人在DeepFool: a simple and accurate method to fool deep neural networks 一文中提出。DeepFool算法不用指定学习速率$\varepsilon$，可以计算出比FGSM算法更小的扰动来达到攻击的目的。 算法简介​ 论文中分别提出了针对二分类和多分类的DeepFool算法，并在不同的模型和数据集上进行了实验。 二分类问题​ 下图为论文中摘取的二分类问题示例，为了改变分类器的决策，在图片上叠加的最小扰动就是$x_{0}$到$f(x)$垂直方向的距离$r_{*}(x)$。 ​ ​ $r_{*}(x)$的解析解可用下式表示. 根据下式，可以很容易地计算得到 $r_{*}(x)$，但是这个扰动值只能使样本达到分类面，而不足以越过， 故最终的扰动值为 $r_{*}(1+\eta)$，$\eta\ll1$，实验中一般取0.02。 ​ ​ 算法伪代码描述如下： 多分类问题​ 下图为多分类器的示意图，图中实线表示分类器真实的分类超平面，而虚线则代表近似的线性分类超平面，在每次迭代过程中，总是基于当前的迭代值，计算一组近似的线性分类超平面，并根据这组近似超平面，计算扰动，并进行迭代得到下一次的迭代值。 ​ 算法伪代码描述如下（移动距离比较小，参数矩阵可以用梯度代替）： 代码实现12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485def deepfool_attack(sess, x, predictions, logits, grads, sample, nb_candidate, overshoot, max_iter, clip_min, clip_max, feed=None): """ TensorFlow implementation of DeepFool. Paper link: see https://arxiv.org/pdf/1511.04599.pdf :param sess: TF session :param x: The input placeholder :param predictions: The model's sorted symbolic output of logits, only the top nb_candidate classes are contained :param logits: The model's unnormalized output tensor (the input to the softmax layer) :param grads: Symbolic gradients of the top nb_candidate classes, procuded from gradient_graph :param sample: Numpy array with sample input :param nb_candidate: The number of classes to test against, i.e., deepfool only consider nb_candidate classes when attacking(thus accelerate speed). The nb_candidate classes are chosen according to the prediction confidence during implementation. :param overshoot: A termination criterion to prevent vanishing updates :param max_iter: Maximum number of iteration for DeepFool :param clip_min: Minimum value for components of the example returned :param clip_max: Maximum value for components of the example returned :return: Adversarial examples """ adv_x = copy.copy(sample) # Initialize the loop variables iteration = 0 current = utils_tf.model_argmax(sess, x, logits, adv_x, feed=feed) if current.shape == (): current = np.array([current]) w = np.squeeze(np.zeros(sample.shape[1:])) # same shape as original image r_tot = np.zeros(sample.shape) original = current # use original label as the reference _logger.debug( "Starting DeepFool attack up to %s iterations", max_iter) # Repeat this main loop until we have achieved misclassification while (np.any(current == original) and iteration &lt; max_iter): if iteration % 5 == 0 and iteration &gt; 0: _logger.info("Attack result at iteration %s is %s", iteration, current) gradients = sess.run(grads, feed_dict=&#123;x: adv_x&#125;) predictions_val = sess.run(predictions, feed_dict=&#123;x: adv_x&#125;) for idx in range(sample.shape[0]): pert = np.inf if current[idx] != original[idx]: continue for k in range(1, nb_candidate): w_k = gradients[idx, k, ...] - gradients[idx, 0, ...] f_k = predictions_val[idx, k] - predictions_val[idx, 0] # adding value 0.00001 to prevent f_k = 0 pert_k = (abs(f_k) + 0.00001) / np.linalg.norm(w_k.flatten()) if pert_k &lt; pert: pert = pert_k w = w_k r_i = pert * w / np.linalg.norm(w) r_tot[idx, ...] = r_tot[idx, ...] + r_i adv_x = np.clip(r_tot + sample, clip_min, clip_max) current = utils_tf.model_argmax(sess, x, logits, adv_x, feed=feed) if current.shape == (): current = np.array([current]) # Update loop variables iteration = iteration + 1 # need more revision, including info like how many succeed _logger.info("Attack result at iteration %s is %s", iteration, current) _logger.info("%s out of %s become adversarial examples at iteration %s", sum(current != original), sample.shape[0], iteration) # need to clip this image into the given range adv_x = np.clip((1 + overshoot) * r_tot + sample, clip_min, clip_max) return adv_x ​ 更详细的代码可见看这里。]]></content>
