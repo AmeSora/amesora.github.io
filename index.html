@@ -383,10 +383,15 @@
 <p>由于数据存储在磁盘上，DBMS就必需负责完成数据在磁盘和内存之间的交换工作。</p>
 <h2 id="2-面向磁盘的DBMS概括"><a href="#2-面向磁盘的DBMS概括" class="headerlink" title="2 面向磁盘的DBMS概括"></a>2 面向磁盘的DBMS概括</h2><p>数据库文件中的数据按页组织，第一页是页目录(directory page)。为了对数据进行操作，DBMS通过缓存池(buffer pool)将数据存到内存中，缓存池管理数据在内存和磁盘之间的换入换出。DBMS通过执行引擎(execution engine)来进行查询操作，查询引擎向缓存池请求特定的页，缓存池则将该页换入内存，并返回一个指向该页的指针，同时缓存池也要确保查询引擎操作的页已经存放在内存中。</p>
 <h2 id="3-DBMS-与-OS-的对比"><a href="#3-DBMS-与-OS-的对比" class="headerlink" title="3 DBMS 与 OS 的对比"></a>3 DBMS 与 OS 的对比</h2><p>DBMS的设计目标之一就是保证数据库的大小超过可用内存的大小。由于磁盘的读写开销较大，因此DBMS需要在从磁盘在获取数据时能够处理其他的查询操作。</p>
-<blockquote>
-<p>虚拟内存：为了实现这一目标，可以</p>
-</blockquote>
-<p>​        </p>
+<p>为了实现这一目标，可以利用mmap(内存映射)实现虚拟内存，将文件的内容映射到进程的地址空间中。此时OS负责页的换入和换出，但是如果mmap发生了页故障，就会阻塞整个进程。因此比起OS，更应该由DBMS自己来控制流程，它比OS更清楚有关的数据访问和查询操作。</p>
+<p>但是可以利用OS进行如下操作：</p>
+<ul>
+<li>madvise: 通知OS准备读某些特定的页。</li>
+<li>mlock: 通知OS不要将内存换出到磁盘。</li>
+<li>msync: 通知OS将内存内容刷新到磁盘上。</li>
+</ul>
+<p>虽然OS可以提供某些DBMS需要的功能，但是由DBMS本身实现相关的过程可以使DBMS具有更好的控制能力和性能表现。</p>
+<h2 id="4-数据库页-Database-Pages"><a href="#4-数据库页-Database-Pages" class="headerlink" title="4 数据库页(Database Pages)"></a>4 数据库页(Database Pages)</h2><p>​        </p>
 
           
         
