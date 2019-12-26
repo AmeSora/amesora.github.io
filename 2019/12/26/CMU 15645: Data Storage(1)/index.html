@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="T&#39;s blog">
 <meta property="og:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-26T13:36:28.056Z">
+<meta property="og:updated_time" content="2019-12-26T13:44:50.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 15645|Data Storage(1)">
 <meta name="twitter:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
@@ -391,7 +391,9 @@
 <li>msync: 通知OS将内存内容刷新到磁盘上。</li>
 </ul>
 <p>虽然OS可以提供某些DBMS需要的功能，但是由DBMS本身实现相关的过程可以使DBMS具有更好的控制能力和性能表现。</p>
-<h2 id="4-数据库页-Database-Pages"><a href="#4-数据库页-Database-Pages" class="headerlink" title="4 数据库页(Database Pages)"></a>4 数据库页(Database Pages)</h2><p>​        </p>
+<h2 id="4-数据库页-Database-Pages"><a href="#4-数据库页-Database-Pages" class="headerlink" title="4 数据库页(Database Pages)"></a>4 数据库页(Database Pages)</h2><p>DBMS通过页（固定大小的数据块）的形式来组织数据库。页可以包含不同类型的数据，如数据项(tuples)、索引(indexes)等。大多数系统不会在同一个页中混合不同类型的数据。</p>
+<p>每个页都有一个唯一的标识。如果数据库是单文件构成的，那么页的ID可以是文件内的偏移量。大多数的DBMS通过一个间接层来将页ID映射到文件路径和偏移量。当更高层的系统需要某个特定编号的页时，存储管理器将页编号转换成对应的文件和偏移量来找到特定的页。</p>
+<p>​        </p>
 
       
     </div>
