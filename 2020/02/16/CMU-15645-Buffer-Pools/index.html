@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="深度学习, 机器学习, 后端, 算法">
+  <meta name="keywords" content="CMU 15645,">
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="T&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
+<meta name="description" content="Locks 与 LatchesLocks:  保护数据库的逻辑内容（如元祖、表、数据库；从事务的角度看） 由事务获取 需要支持回滚  Latches:  保护DBMS内部数据结构的重要部分（从线程角度看）  由操作获取  不需要支持回滚   缓存池Buffer Pool缓存池是从磁盘中读取的页集合的内存缓存。它是内存中的一块区域，由固定大小的页数组组成。每个数组元素叫做帧(frame)。当DBMS">
+<meta name="keywords" content="CMU 15645">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CMU 15645 - Buffer Pools">
+<meta property="og:url" content="http://yoursite.com/2020/02/16/CMU-15645-Buffer-Pools/index.html">
 <meta property="og:site_name" content="T&#39;s blog">
+<meta property="og:description" content="Locks 与 LatchesLocks:  保护数据库的逻辑内容（如元祖、表、数据库；从事务的角度看） 由事务获取 需要支持回滚  Latches:  保护DBMS内部数据结构的重要部分（从线程角度看）  由操作获取  不需要支持回滚   缓存池Buffer Pool缓存池是从磁盘中读取的页集合的内存缓存。它是内存中的一块区域，由固定大小的页数组组成。每个数组元素叫做帧(frame)。当DBMS">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/assets/cmu-bf1.png">
+<meta property="og:updated_time" content="2020-02-15T17:40:22.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="T&#39;s blog">
+<meta name="twitter:title" content="CMU 15645 - Buffer Pools">
+<meta name="twitter:description" content="Locks 与 LatchesLocks:  保护数据库的逻辑内容（如元祖、表、数据库；从事务的角度看） 由事务获取 需要支持回滚  Latches:  保护DBMS内部数据结构的重要部分（从线程角度看）  由操作获取  不需要支持回滚   缓存池Buffer Pool缓存池是从磁盘中读取的页集合的内存缓存。它是内存中的一块区域，由固定大小的页数组组成。每个数组元素叫做帧(frame)。当DBMS">
+<meta name="twitter:image" content="http://yoursite.com/assets/cmu-bf1.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2020/02/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/16/CMU-15645-Buffer-Pools/">
 
 
 
 
 
-  <title>归档 | T's blog</title>
+  <title>CMU 15645 - Buffer Pools | T's blog</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -266,142 +273,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/16/CMU-15645-Buffer-Pools/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="青檀">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">CMU 15645 - Buffer Pools</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T01:21:41+08:00">
+                2020-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 8 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Database System</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/02/16/CMU-15645-Buffer-Pools/" itemprop="url">
-              
-                <span itemprop="name">CMU 15645 - Buffer Pools</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-16T01:21:41+08:00" content="2020-02-16">
-          02-16
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/02/15/CMU-15645-Data-Storage-2/" itemprop="url">
-              
-                <span itemprop="name">CMU 15645 - Data Storage(2)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-15T23:59:35+08:00" content="2020-02-15">
-          02-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2020/02/14/Effective-Modern-C/" itemprop="url">
-              
-                <span itemprop="name">Effective Modern C++ 阅读笔记</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-14T22:26:26+08:00" content="2020-02-14">
-          02-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="Locks-与-Latches"><a href="#Locks-与-Latches" class="headerlink" title="Locks 与 Latches"></a>Locks 与 Latches</h2><p><strong>Locks:</strong></p>
+<ul>
+<li>保护数据库的逻辑内容（如元祖、表、数据库；从事务的角度看）</li>
+<li>由事务获取</li>
+<li>需要支持回滚</li>
+</ul>
+<p><strong>Latches:</strong></p>
+<ul>
+<li><p>保护DBMS内部数据结构的重要部分（从线程角度看）</p>
+</li>
+<li><p>由操作获取</p>
+</li>
+<li><p>不需要支持回滚</p>
+</li>
+</ul>
+<h2 id="缓存池Buffer-Pool"><a href="#缓存池Buffer-Pool" class="headerlink" title="缓存池Buffer Pool"></a>缓存池Buffer Pool</h2><p>缓存池是从磁盘中读取的页集合的内存缓存。它是内存中的一块区域，由固定大小的页数组组成。每个数组元素叫做帧(frame)。当DBMS需要一页时，该页从磁盘中读入存在帧中。</p>
+<p>缓存池维护的元数据：</p>
+<ul>
+<li>页表：内存中的哈希表，记录当前内存中的页。将页的ID与帧的位置映射起来。</li>
+<li>脏位：当线程修改一个页时设置该位。代表存储管理器必须将页写回磁盘。</li>
+<li>Pin Counter：记录当前访问该页的线程数量（包括读和修改）。线程访问前必需将该计数器自增。若该计数器值大于0，则内存管理器就不能将该页从内存中淘汰出去。</li>
+</ul>
+<p>优化：</p>
+<ul>
+<li>多缓存池：The DBMS can also have multiple buffer pools for different purposes.  Thishelps reduce latch contention and improves locality</li>
+<li>预取：The DBMS can also optimize by pre fetching pages based on the query plan.  Com-monly done when accessing pages sequentially.</li>
+<li>Scan Sharing：Query cursors can attach to other cursors and scan pages together</li>
+</ul>
+<p>分配策略：</p>
+<ul>
+<li>全局策略：How a DBMS should make decisions for all active txns</li>
+<li>局部策略：Allocate frames to a specific txn without considering the behavior of concurrent txns</li>
+</ul>
+<h2 id="替换策略"><a href="#替换策略" class="headerlink" title="替换策略"></a>替换策略</h2><p>替换策略是DBMS实现的一种算法，用于决定哪一页从缓存池中淘汰。</p>
+<p>目标：</p>
+<ul>
+<li>准确性</li>
+<li>正确性</li>
+<li>速度</li>
+<li>元数据开销</li>
+</ul>
+<p><strong>LRU：</strong></p>
+<ul>
+<li>为每一页维护时间戳，记录上一次访问的时间</li>
+<li>DBMS淘汰时间戳最旧的页</li>
+</ul>
+<p><strong>时钟替换策略CLOCK:</strong></p>
+<p>是一种LRU的近似，但不需要为每一页维护时间戳</p>
+<ul>
+<li>每一页有一个引用位</li>
+<li>当页被访问时，设为1</li>
+</ul>
+<p>Organize the pages in a circular buffer with a “clock hand”：</p>
+<ul>
+<li>Upon sweeping check if a pages bit is set to 1</li>
+<li>If yes, set to zero, if no, then evict</li>
+<li>Clock hand remembers position between evictions</li>
+</ul>
+<p><img src="/assets/cmu-bf1.png" alt="cmu-bf1"></p>
+<p>替换：</p>
+<p>​    LRU和CLOCK有以下问题：</p>
+<ul>
+<li><p>LRU and Clock are susceptible tosequential floodingwhere the buffer pool’s contents are trasheddue to a sequential scan.</p>
+</li>
+<li><p>It may be that the LRU page is actually important due to not tracking meta-data of how a page is used</p>
+<p>更好的解决方法：</p>
+</li>
+<li><p>LRU-K: Take into account history of the last K references</p>
+</li>
+<li><p>Priority hints: Allow txns to tell the buffer pool whether page is important or not</p>
+</li>
+<li><p>Localization: Choose pages to evict on a per txn/query basis</p>
+</li>
+</ul>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CMU-15645/" rel="tag"># CMU 15645</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/15/CMU-15645-Data-Storage-2/" rel="next" title="CMU 15645 - Data Storage(2)">
+                <i class="fa fa-chevron-left"></i> CMU 15645 - Data Storage(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -409,6 +516,20 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -429,8 +550,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -490,6 +620,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Locks-与-Latches"><span class="nav-number">1.</span> <span class="nav-text">Locks 与 Latches</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存池Buffer-Pool"><span class="nav-number">2.</span> <span class="nav-text">缓存池Buffer Pool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换策略"><span class="nav-number">3.</span> <span class="nav-text">替换策略</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -623,6 +769,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -638,6 +788,18 @@
 
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/02/16/CMU-15645-Buffer-Pools/';
+          this.page.identifier = '2020/02/16/CMU-15645-Buffer-Pools/';
+          this.page.title = 'CMU 15645 - Buffer Pools';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://amesora.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
