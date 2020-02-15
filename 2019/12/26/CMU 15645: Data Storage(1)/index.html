@@ -88,7 +88,8 @@
 <meta property="og:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/assets/cmu-ds1.png">
-<meta property="og:updated_time" content="2020-02-15T15:41:27.045Z">
+<meta property="og:image" content="http://yoursite.com/assets/cmu-ds2.png">
+<meta property="og:updated_time" content="2020-02-15T15:56:30.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU 15645 | Data Storage(1)">
 <meta name="twitter:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
@@ -416,15 +417,50 @@
 <li>某些系统需要页是独立的(self-contained)（如oracle）</li>
 </ul>
 <p>一个布局数据的简易方法就是，记录DBMS在页中存储了多少元祖，然后每当新增一个元祖时就追加到末尾。然而当删除一个元祖或者元祖具有变长的属性时就会发生问题。</p>
-<p>两种数据布局的方法：1. slotted-pages    2. log-structured</p>
-<p>Slotted-pages：将槽(slots)映射到偏移量(offset)</p>
+<p><strong>两种数据布局的方法</strong>：1. slotted-pages    2. log-structured</p>
+<ol>
+<li><p>Slotted-pages：将槽(slots)映射到偏移量(offset)</p>
 <p><img src="/assets/cmu-ds1.png" alt="cmu-db1"></p>
+</li>
+</ol>
 <ul>
 <li>如今DBMS中最常见的方法</li>
 <li>首部跟踪已用槽的数量、最后使用的槽的起始位置偏移量和跟踪每个元祖起始位置的槽数组。</li>
 <li>新增一个元祖时，槽数组从起始增长到结束位置，元祖从结束增长到起始位置，当二者相遇时则页满。</li>
 </ul>
-<p>Log-Structured：DBMS只记录日志</p>
+<ol start="2">
+<li><p>Log-Structured：DBMS只记录日志</p>
+<p><img src="/assets/cmu-ds2.png" alt="cmu-db2"></p>
+</li>
+</ol>
+<ul>
+<li>记录数据库是如何改变的。(insert, delete, update)</li>
+<li>为了读取一个记录，DBMS需要扫描日志文件。</li>
+<li>快写慢读。</li>
+<li>对于append-only效果很好。</li>
+<li>为了避免long reads可以使用索引让DBMS跳到指定位置的日志。也可以周期性的压缩日志。</li>
+</ul>
+<h2 id="7-元祖布局"><a href="#7-元祖布局" class="headerlink" title="7 元祖布局"></a>7 元祖布局</h2><p>元祖是字节的序列。DBMS需要将这些字节解释成属性和值。</p>
+<p><strong>元祖首部</strong>：包含元祖的元数组。</p>
+<ul>
+<li>对于DBMS并发控制协议的可见性信息（如哪个事务创建/修改了元祖）</li>
+<li>位图</li>
+<li>DBMS不需要在此处存储数据库的元信息</li>
+</ul>
+<p><strong>元祖数据</strong>：属性的实际数据。</p>
+<ul>
+<li>属性按照建表时指定的顺序存储</li>
+<li>大多数DBMS不允许元祖超过页的大小</li>
+</ul>
+<p><strong>标识符</strong>：</p>
+<ul>
+<li>每个元祖都分配一个唯一的标识符</li>
+<li>最常见的：page_id + (offset or slot)</li>
+</ul>
+<p><strong>非正规的元祖数据</strong>：</p>
+<ul>
+<li>如果两个表相关，DBMS就可以预连接(pre-join)，因此表可能在相同的页中结尾。可以让DBMS更快的读取数据（只需要加载一页）。但是更新的开销增大了，因为对于每个元祖DBMS需要更多的空间。</li>
+</ul>
 
       
     </div>
@@ -609,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-存储"><span class="nav-number">1.</span> <span class="nav-text">1 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-面向磁盘的DBMS概括"><span class="nav-number">2.</span> <span class="nav-text">2 面向磁盘的DBMS概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DBMS-与-OS-的对比"><span class="nav-number">3.</span> <span class="nav-text">3 DBMS 与 OS 的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据库页-Database-Pages"><span class="nav-number">4.</span> <span class="nav-text">4 数据库页(Database Pages)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数据库堆-Database-Heap"><span class="nav-number">5.</span> <span class="nav-text">5 数据库堆(Database Heap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-页布局"><span class="nav-number">6.</span> <span class="nav-text">6 页布局</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-存储"><span class="nav-number">1.</span> <span class="nav-text">1 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-面向磁盘的DBMS概括"><span class="nav-number">2.</span> <span class="nav-text">2 面向磁盘的DBMS概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DBMS-与-OS-的对比"><span class="nav-number">3.</span> <span class="nav-text">3 DBMS 与 OS 的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据库页-Database-Pages"><span class="nav-number">4.</span> <span class="nav-text">4 数据库页(Database Pages)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数据库堆-Database-Heap"><span class="nav-number">5.</span> <span class="nav-text">5 数据库堆(Database Heap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-页布局"><span class="nav-number">6.</span> <span class="nav-text">6 页布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-元祖布局"><span class="nav-number">7.</span> <span class="nav-text">7 元祖布局</span></a></li></ol></div>
             
 
           </div>
