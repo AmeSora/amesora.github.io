@@ -427,8 +427,46 @@
 <p><img src="/assets/cmu-ds3.png" alt="cmu-db3"></p>
 <h2 id="存储模型"><a href="#存储模型" class="headerlink" title="存储模型"></a>存储模型</h2><p>页存储元祖的方式有很多种。</p>
 <p><strong>N元存储模型 N-Ary Storage Model (NSM)</strong></p>
-<p>对于单一元祖，DBMS将它的属性存储在相邻位置。</p>
-<p>- </p>
+<p>对于单一元祖，DBMS将它的属性存储在相邻位置。这种方法适合OLTP（事务通常只操作一个实体）和插入较多的情况。对于一个元祖只用取一次数据页。（Row Stores）</p>
+<p>​        好处：</p>
+<ul>
+<li><p>Fast inserts, updates, and deletes</p>
+</li>
+<li><p>Good for queries that need the entire tuple</p>
+<p>坏处：</p>
+</li>
+<li><p>Not good for scanning large portions of the table and/or a subset of the attributes.  This is because it pollutes the buffer pool by fetching data that is not needed for processing the query.</p>
+</li>
+</ul>
+<p>下面是两种不同组织NSM数据库的方式：</p>
+<ul>
+<li><p>Heap-Organized Tables: Tuples are stored in blocks called a heap, and the heap does not necessarily define an order.</p>
+</li>
+<li><p>Index-Organized Tables: Tuples  are  stored  in  the  primary  key  index  itself,  but  different  from  a clustered index.</p>
+<ul>
+<li>关于primary key主键和clustered index聚集索引：表通常具有包含唯一标识表中每一行的值的一列或一组列。这样的一列或多列称为表的主键 (PK)。主键是表中的一个字段或多个字段，用来唯一地标识表中的一条记录。唯一性是主键最主要的特性。对于一张表来说，聚集索引只能有一个，因为数据真实的物理存储顺序就是按照聚集索引存储的。</li>
+<li>摘自Stack Overflow：主键是一种逻辑概念，聚集索引是一种物理概念，它可以影响磁盘上记录的存储顺序。</li>
+</ul>
+</li>
+</ul>
+<p><strong>分离存储模型Decomposition Storage Model (DSM)</strong></p>
+<p>DBMS把所有元祖的同一个属性存储在一起，适用于OLAP，它需要大规模的扫描属性的子集。（Column stores）</p>
+<p>​    好处：</p>
+<ul>
+<li>Reduces the amount of wasted work during query execution because the DBMS only reads the datathat it needs for that query.</li>
+<li>Enables better compression because all of the values for the same attribute are stored contiguously</li>
+</ul>
+<p>​    坏处：</p>
+<ul>
+<li>Slow for point queries, inserts, updates, and deletes because of tuple splitting/stitching</li>
+</ul>
+<p>为了将元祖组合在一起，可以使用以下方式：</p>
+<ul>
+<li>定长偏移量：假定所有属性长度固定。Then when the system wants the attribute for a specific tuple, it knows how to jump to that spot in the file. To accommodate the variable-length fields, the system can pad them so that they are all the same length, or you could use a dictionary that takes a fixed-size integer and maps the integer to the value.</li>
+<li>内嵌元祖ID：For every attribute in the columns, store the tuple id with it. The system wouldalso need extra information to tell it how to jump to every attribute that has that id.</li>
+</ul>
+<p>大多数使用定长偏移量。</p>
+<p>Row stores are usually better for OLTP, while column stores ar better for OLAP.</p>
 
           
         
