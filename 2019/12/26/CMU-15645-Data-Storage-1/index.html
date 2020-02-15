@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="对抗样本,">
+  <meta name="keywords" content="CMU 15645,">
 
 
 
@@ -79,24 +79,21 @@
 
 
 
-<meta name="description" content="概述​    DeepFool也是一种基于梯度的白盒攻击算法（与FGSM类似），由Seyed-Mohsen Moosavi-Dezfooli等人在DeepFool: a simple and accurate method to fool deep neural networks 一文中提出。DeepFool算法不用指定学习速率$\varepsilon$，可以计算出比FGSM算法更小的扰动来达到攻">
-<meta name="keywords" content="对抗样本">
+<meta name="description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
+<meta name="keywords" content="CMU 15645">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读Paper|DeepFool算法简介">
-<meta property="og:url" content="http://yoursite.com/2019/08/27/读Paper-DeepFool算法简介/index.html">
+<meta property="og:title" content="CMU 15645 - Data Storage(1)">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/CMU-15645-Data-Storage-1/index.html">
 <meta property="og:site_name" content="T&#39;s blog">
-<meta property="og:description" content="概述​    DeepFool也是一种基于梯度的白盒攻击算法（与FGSM类似），由Seyed-Mohsen Moosavi-Dezfooli等人在DeepFool: a simple and accurate method to fool deep neural networks 一文中提出。DeepFool算法不用指定学习速率$\varepsilon$，可以计算出比FGSM算法更小的扰动来达到攻">
+<meta property="og:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/assets/deepfool-1.png">
-<meta property="og:image" content="http://yoursite.com/assets/deepfool-2.png">
-<meta property="og:image" content="http://yoursite.com/assets/deepfool-3.png">
-<meta property="og:image" content="http://yoursite.com/assets/deepfool-4.png">
-<meta property="og:image" content="http://yoursite.com/assets/deepfool-5.png">
-<meta property="og:updated_time" content="2019-08-27T14:05:40.188Z">
+<meta property="og:image" content="http://yoursite.com/assets/cmu-ds1.png">
+<meta property="og:image" content="http://yoursite.com/assets/cmu-ds2.png">
+<meta property="og:updated_time" content="2020-02-15T16:01:11.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读Paper|DeepFool算法简介">
-<meta name="twitter:description" content="概述​    DeepFool也是一种基于梯度的白盒攻击算法（与FGSM类似），由Seyed-Mohsen Moosavi-Dezfooli等人在DeepFool: a simple and accurate method to fool deep neural networks 一文中提出。DeepFool算法不用指定学习速率$\varepsilon$，可以计算出比FGSM算法更小的扰动来达到攻">
-<meta name="twitter:image" content="http://yoursite.com/assets/deepfool-1.png">
+<meta name="twitter:title" content="CMU 15645 - Data Storage(1)">
+<meta name="twitter:description" content="1 存储CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。 根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：          易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存">
+<meta name="twitter:image" content="http://yoursite.com/assets/cmu-ds1.png">
 
 
 
@@ -126,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/27/读Paper-DeepFool算法简介/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/CMU-15645-Data-Storage-1/">
 
 
 
 
 
-  <title>读Paper|DeepFool算法简介 | T's blog</title>
+  <title>CMU 15645 - Data Storage(1) | T's blog</title>
   
 
 
@@ -291,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/读Paper-DeepFool算法简介/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/CMU-15645-Data-Storage-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="青檀">
@@ -308,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">读Paper|DeepFool算法简介</h1>
+          <h1 class="post-title" itemprop="name headline">CMU 15645 - Data Storage(1)</h1>
         
 
         <div class="post-meta">
@@ -320,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T01:03:48+08:00">
-                2019-08-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T20:36:15+08:00">
+                2019-12-26
               </time>
             
 
@@ -343,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/深度学习/" itemprop="url" rel="index">
-                    <span itemprop="name">深度学习</span>
+                  <a href="/categories/Database-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Database System</span>
                   </a>
                 </span>
 
@@ -380,23 +377,90 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​    DeepFool也是一种基于梯度的白盒攻击算法（与FGSM类似），由Seyed-Mohsen Moosavi-Dezfooli等人在<a href="https://arxiv.org/abs/1511.04599" target="_blank" rel="noopener">DeepFool: a simple and accurate method to fool deep neural networks</a> 一文中提出。DeepFool算法不用指定学习速率$\varepsilon$，可以计算出比FGSM算法更小的扰动来达到攻击的目的。</p>
-<h1 id="算法简介"><a href="#算法简介" class="headerlink" title="算法简介"></a>算法简介</h1><p>​    论文中分别提出了针对二分类和多分类的DeepFool算法，并在不同的模型和数据集上进行了实验。</p>
-<h2 id="二分类问题"><a href="#二分类问题" class="headerlink" title="二分类问题"></a>二分类问题</h2><p>​    下图为论文中摘取的二分类问题示例，为了改变分类器的决策，在图片上叠加的最小扰动就是$x_{0}$到$f(x)$垂直方向的距离$r_{*}(x)$。</p>
-<p>​                                <img src="/assets/deepfool-1.png" alt="deepfool-1"></p>
-<p>​    $r_{*}(x)$的解析解可用下式表示.</p>
-<p>根据下式，可以很容易地计算得到 $r_{*}(x)$，但是这个扰动值只能使样本达到分类面，而不足以越过，</p>
-<p>故最终的扰动值为 $r_{*}(1+\eta)$，$\eta\ll1$，实验中一般取0.02。</p>
-<p>​                            <img src="/assets/deepfool-2.png" alt="deepfool-2">            </p>
-<p>​    算法伪代码描述如下：</p>
-<p><img src="/assets/deepfool-3.png" alt="deepfool-3">                                            </p>
-<h2 id="多分类问题"><a href="#多分类问题" class="headerlink" title="多分类问题"></a>多分类问题</h2><p>​    下图为多分类器的示意图，图中实线表示分类器真实的分类超平面，而虚线则代表近似的线性分类超平面，在每次迭代过程中，总是基于当前的迭代值，计算一组近似的线性分类超平面，并根据这组近似超平面，计算扰动，并进行迭代得到下一次的迭代值。</p>
-<p><img src="/assets/deepfool-4.png" alt="deepfool-4"></p>
-<p>​    算法伪代码描述如下（移动距离比较小，参数矩阵可以用梯度代替）：</p>
-<p><img src="/assets/deepfool-5.png" alt="deepfool-5"></p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">deepfool_attack</span><span class="params">(sess,</span></span></span><br><span class="line"><span class="function"><span class="params">                    x,</span></span></span><br><span class="line"><span class="function"><span class="params">                    predictions,</span></span></span><br><span class="line"><span class="function"><span class="params">                    logits,</span></span></span><br><span class="line"><span class="function"><span class="params">                    grads,</span></span></span><br><span class="line"><span class="function"><span class="params">                    sample,</span></span></span><br><span class="line"><span class="function"><span class="params">                    nb_candidate,</span></span></span><br><span class="line"><span class="function"><span class="params">                    overshoot,</span></span></span><br><span class="line"><span class="function"><span class="params">                    max_iter,</span></span></span><br><span class="line"><span class="function"><span class="params">                    clip_min,</span></span></span><br><span class="line"><span class="function"><span class="params">                    clip_max,</span></span></span><br><span class="line"><span class="function"><span class="params">                    feed=None)</span>:</span></span><br><span class="line">  <span class="string">"""</span></span><br><span class="line"><span class="string">  TensorFlow implementation of DeepFool.</span></span><br><span class="line"><span class="string">  Paper link: see https://arxiv.org/pdf/1511.04599.pdf</span></span><br><span class="line"><span class="string">  :param sess: TF session</span></span><br><span class="line"><span class="string">  :param x: The input placeholder</span></span><br><span class="line"><span class="string">  :param predictions: The model's sorted symbolic output of logits, only the</span></span><br><span class="line"><span class="string">                     top nb_candidate classes are contained</span></span><br><span class="line"><span class="string">  :param logits: The model's unnormalized output tensor (the input to</span></span><br><span class="line"><span class="string">                 the softmax layer)</span></span><br><span class="line"><span class="string">  :param grads: Symbolic gradients of the top nb_candidate classes, procuded</span></span><br><span class="line"><span class="string">               from gradient_graph</span></span><br><span class="line"><span class="string">  :param sample: Numpy array with sample input</span></span><br><span class="line"><span class="string">  :param nb_candidate: The number of classes to test against, i.e.,</span></span><br><span class="line"><span class="string">                       deepfool only consider nb_candidate classes when</span></span><br><span class="line"><span class="string">                       attacking(thus accelerate speed). The nb_candidate</span></span><br><span class="line"><span class="string">                       classes are chosen according to the prediction</span></span><br><span class="line"><span class="string">                       confidence during implementation.</span></span><br><span class="line"><span class="string">  :param overshoot: A termination criterion to prevent vanishing updates</span></span><br><span class="line"><span class="string">  :param max_iter: Maximum number of iteration for DeepFool</span></span><br><span class="line"><span class="string">  :param clip_min: Minimum value for components of the example returned</span></span><br><span class="line"><span class="string">  :param clip_max: Maximum value for components of the example returned</span></span><br><span class="line"><span class="string">  :return: Adversarial examples</span></span><br><span class="line"><span class="string">  """</span></span><br><span class="line">  adv_x = copy.copy(sample)</span><br><span class="line">  <span class="comment"># Initialize the loop variables</span></span><br><span class="line">  iteration = <span class="number">0</span></span><br><span class="line">  current = utils_tf.model_argmax(sess, x, logits, adv_x, feed=feed)</span><br><span class="line">  <span class="keyword">if</span> current.shape == ():</span><br><span class="line">    current = np.array([current])</span><br><span class="line">  w = np.squeeze(np.zeros(sample.shape[<span class="number">1</span>:]))  <span class="comment"># same shape as original image</span></span><br><span class="line">  r_tot = np.zeros(sample.shape)</span><br><span class="line">  original = current  <span class="comment"># use original label as the reference</span></span><br><span class="line"></span><br><span class="line">  _logger.debug(</span><br><span class="line">      <span class="string">"Starting DeepFool attack up to %s iterations"</span>, max_iter)</span><br><span class="line">  <span class="comment"># Repeat this main loop until we have achieved misclassification</span></span><br><span class="line">  <span class="keyword">while</span> (np.any(current == original) <span class="keyword">and</span> iteration &lt; max_iter):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> iteration % <span class="number">5</span> == <span class="number">0</span> <span class="keyword">and</span> iteration &gt; <span class="number">0</span>:</span><br><span class="line">      _logger.info(<span class="string">"Attack result at iteration %s is %s"</span>, iteration, current)</span><br><span class="line">    gradients = sess.run(grads, feed_dict=&#123;x: adv_x&#125;)</span><br><span class="line">    predictions_val = sess.run(predictions, feed_dict=&#123;x: adv_x&#125;)</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> range(sample.shape[<span class="number">0</span>]):</span><br><span class="line">      pert = np.inf</span><br><span class="line">      <span class="keyword">if</span> current[idx] != original[idx]:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, nb_candidate):</span><br><span class="line">        w_k = gradients[idx, k, ...] - gradients[idx, <span class="number">0</span>, ...]</span><br><span class="line">        f_k = predictions_val[idx, k] - predictions_val[idx, <span class="number">0</span>]</span><br><span class="line">        <span class="comment"># adding value 0.00001 to prevent f_k = 0</span></span><br><span class="line">        pert_k = (abs(f_k) + <span class="number">0.00001</span>) / np.linalg.norm(w_k.flatten())</span><br><span class="line">        <span class="keyword">if</span> pert_k &lt; pert:</span><br><span class="line">          pert = pert_k</span><br><span class="line">          w = w_k</span><br><span class="line">      r_i = pert * w / np.linalg.norm(w)</span><br><span class="line">      r_tot[idx, ...] = r_tot[idx, ...] + r_i</span><br><span class="line"></span><br><span class="line">    adv_x = np.clip(r_tot + sample, clip_min, clip_max)</span><br><span class="line">    current = utils_tf.model_argmax(sess, x, logits, adv_x, feed=feed)</span><br><span class="line">    <span class="keyword">if</span> current.shape == ():</span><br><span class="line">      current = np.array([current])</span><br><span class="line">    <span class="comment"># Update loop variables</span></span><br><span class="line">    iteration = iteration + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># need more revision, including info like how many succeed</span></span><br><span class="line">  _logger.info(<span class="string">"Attack result at iteration %s is %s"</span>, iteration, current)</span><br><span class="line">  _logger.info(<span class="string">"%s out of %s become adversarial examples at iteration %s"</span>,</span><br><span class="line">               sum(current != original),</span><br><span class="line">               sample.shape[<span class="number">0</span>],</span><br><span class="line">               iteration)</span><br><span class="line">  <span class="comment"># need to clip this image into the given range</span></span><br><span class="line">  adv_x = np.clip((<span class="number">1</span> + overshoot) * r_tot + sample, clip_min, clip_max)</span><br><span class="line">  <span class="keyword">return</span> adv_x</span><br></pre></td></tr></table></figure>
-
-<p>​    更详细的代码可见看<a href="https://github.com/tensorflow/cleverhans/blob/master/cleverhans/attacks/deep_fool.py" target="_blank" rel="noopener">这里</a>。</p>
+        <h2 id="1-存储"><a href="#1-存储" class="headerlink" title="1 存储"></a>1 存储</h2><p>CMU 15645课程要求实现一个面向磁盘(disk-oriented)的DBMS，因此假定数据存放在非易失性的磁盘中。</p>
+<p>根据存储介质的易失性和非易失性，将存储层次划分为以下两种类别：        </p>
+<ul>
+<li>易失性设备：易失性指当机器断电时，存储的数据也随之丢失。而此类设备往往支持按字节寻址的快速随机访问，程序可以根据字节地址取出其中的数据。这里通常用它指代内存。（这并不代表易失性设备只有内存，其他如寄存器、CPU cache等）</li>
+<li>非易失性设备：不必持续供电来存储数据（即数据不会因为断电而丢失），通常是按块/页寻址的。因此想要读入某处地址的数据，就必须同时读取所在的整块/页的数据。通常是顺序访问的（即不可以随机访问）。这里通常用它指代磁盘。</li>
+</ul>
+<p>由于数据存储在磁盘上，DBMS就必需负责完成数据在磁盘和内存之间的交换工作。</p>
+<h2 id="2-面向磁盘的DBMS概括"><a href="#2-面向磁盘的DBMS概括" class="headerlink" title="2 面向磁盘的DBMS概括"></a>2 面向磁盘的DBMS概括</h2><p>数据库文件中的数据按页组织，第一页是页目录(directory page)。为了对数据进行操作，DBMS通过缓存池(buffer pool)将数据存到内存中，缓存池管理数据在内存和磁盘之间的换入换出。DBMS通过执行引擎(execution engine)来进行查询操作，查询引擎向缓存池请求特定的页，缓存池则将该页换入内存，并返回一个指向该页的指针，同时缓存池也要确保查询引擎操作的页已经存放在内存中。</p>
+<h2 id="3-DBMS-与-OS-的对比"><a href="#3-DBMS-与-OS-的对比" class="headerlink" title="3 DBMS 与 OS 的对比"></a>3 DBMS 与 OS 的对比</h2><p>DBMS的设计目标之一就是保证数据库的大小超过可用内存的大小。由于磁盘的读写开销较大，因此DBMS需要在从磁盘在获取数据时能够处理其他的查询操作。</p>
+<p>为了实现这一目标，可以利用mmap(内存映射)实现虚拟内存，将文件的内容映射到进程的地址空间中。此时OS负责页的换入和换出，但是如果mmap发生了页故障，就会阻塞整个进程。因此比起OS，更应该由DBMS自己来控制流程，它比OS更清楚有关的数据访问和查询操作。</p>
+<p>但是可以利用OS进行如下操作：</p>
+<ul>
+<li>madvise: 通知OS准备读某些特定的页。</li>
+<li>mlock: 通知OS不要将内存换出到磁盘。</li>
+<li>msync: 通知OS将内存内容刷新到磁盘上。</li>
+</ul>
+<p>虽然OS可以提供某些DBMS需要的功能，但是由DBMS本身实现相关的过程可以使DBMS具有更好的控制能力和性能表现。</p>
+<h2 id="4-数据库页-Database-Pages"><a href="#4-数据库页-Database-Pages" class="headerlink" title="4 数据库页(Database Pages)"></a>4 数据库页(Database Pages)</h2><p>DBMS通过页（固定大小的数据块）的形式来组织数据库。页可以包含不同类型的数据，如数据项(tuples)、索引(indexes)等。大多数系统不会在同一个页中混合不同类型的数据。</p>
+<p>每个页都有一个唯一的标识。如果数据库是单文件构成的，那么页的ID可以是文件内的偏移量。大多数的DBMS通过一个间接层来将页ID映射到文件路径和偏移量。当更高层的系统需要某个特定编号的页时，存储管理器将页编号转换成对应的文件和偏移量来找到特定的页。</p>
+<p>大多数DBMS采用固定大小的页，为了避免支持变长页的工程开销。在DBMS中有三种页的概念：</p>
+<ol>
+<li>硬件页(通常是4KB)</li>
+<li>操作系统页(4KB)</li>
+<li>数据库页(1-16KB)</li>
+</ol>
+<p>存储设备可以保证对硬件页大小的文件是原子写的。例如，如果硬件页大小是4KB，那么当系统向磁盘写入4KB的内容时，要么全部写入，要么发生错误而不写入。这也代表如果数据库页大小超过硬件页，DBMS就必须采取一些额外的措施来保证数组可以安全的写入到磁盘中，因为程序可能在写入时系统发生发生崩溃，导致数据写入出现问题。</p>
+<h2 id="5-数据库堆-Database-Heap"><a href="#5-数据库堆-Database-Heap" class="headerlink" title="5 数据库堆(Database Heap)"></a>5 数据库堆(Database Heap)</h2><p>堆文件是页的无序几何，页中元祖乱序存放。DBMS可以通过页的链表或页目录的方式定位给定的page_id对应的页在磁盘上的位置。</p>
+<ol>
+<li>链表：header page存储空页和数据页的指针。然而当DBMS想要找到特定的页时，就必须做顺序扫描。</li>
+<li>页目录：DBMS维护某些特定的页，这些页中存放数据页所在位置和每页中的空闲空间。</li>
+</ol>
+<h2 id="6-页布局"><a href="#6-页布局" class="headerlink" title="6 页布局"></a>6 页布局</h2><p>每个页都包含一个首部，记录与该页内容有关的元数据。</p>
+<ul>
+<li>页大小</li>
+<li>校验和</li>
+<li>DBMS版本</li>
+<li>事务可见性</li>
+<li>某些系统需要页是独立的(self-contained)（如oracle）</li>
+</ul>
+<p>一个布局数据的简易方法就是，记录DBMS在页中存储了多少元祖，然后每当新增一个元祖时就追加到末尾。然而当删除一个元祖或者元祖具有变长的属性时就会发生问题。</p>
+<p><strong>两种数据布局的方法</strong>：1. slotted-pages    2. log-structured</p>
+<ol>
+<li><p>Slotted-pages：将槽(slots)映射到偏移量(offset)</p>
+<p><img src="/assets/cmu-ds1.png" alt="cmu-db1"></p>
+</li>
+</ol>
+<ul>
+<li>如今DBMS中最常见的方法</li>
+<li>首部跟踪已用槽的数量、最后使用的槽的起始位置偏移量和跟踪每个元祖起始位置的槽数组。</li>
+<li>新增一个元祖时，槽数组从起始增长到结束位置，元祖从结束增长到起始位置，当二者相遇时则页满。</li>
+</ul>
+<ol start="2">
+<li><p>Log-Structured：DBMS只记录日志</p>
+<p><img src="/assets/cmu-ds2.png" alt="cmu-db2"></p>
+</li>
+</ol>
+<ul>
+<li>记录数据库是如何改变的。(insert, delete, update)</li>
+<li>为了读取一个记录，DBMS需要扫描日志文件。</li>
+<li>快写慢读。</li>
+<li>对于append-only效果很好。</li>
+<li>为了避免long reads可以使用索引让DBMS跳到指定位置的日志。也可以周期性的压缩日志。</li>
+</ul>
+<h2 id="7-元祖布局"><a href="#7-元祖布局" class="headerlink" title="7 元祖布局"></a>7 元祖布局</h2><p>元祖是字节的序列。DBMS需要将这些字节解释成属性和值。</p>
+<p><strong>元祖首部</strong>：包含元祖的元数组。</p>
+<ul>
+<li>对于DBMS并发控制协议的可见性信息（如哪个事务创建/修改了元祖）</li>
+<li>位图</li>
+<li>DBMS不需要在此处存储数据库的元信息</li>
+</ul>
+<p><strong>元祖数据</strong>：属性的实际数据。</p>
+<ul>
+<li>属性按照建表时指定的顺序存储</li>
+<li>大多数DBMS不允许元祖超过页的大小</li>
+</ul>
+<p><strong>标识符</strong>：</p>
+<ul>
+<li>每个元祖都分配一个唯一的标识符</li>
+<li>最常见的：page_id + (offset or slot)</li>
+</ul>
+<p><strong>非正规的元祖数据</strong>：</p>
+<ul>
+<li>如果两个表相关，DBMS就可以预连接(pre-join)，因此表可能在相同的页中结尾。可以让DBMS更快的读取数据（只需要加载一页）。但是更新的开销增大了，因为对于每个元祖DBMS需要更多的空间。</li>
+</ul>
 
       
     </div>
@@ -414,7 +478,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/对抗样本/" rel="tag"># 对抗样本</a>
+            <a href="/tags/CMU-15645/" rel="tag"># CMU 15645</a>
           
         </div>
       
@@ -427,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/21/读Paper-FGSM算法简介/" rel="next" title="读Paper|FGSM算法简介">
-                <i class="fa fa-chevron-left"></i> 读Paper|FGSM算法简介
+              <a href="/2019/08/27/读Paper-DeepFool算法简介/" rel="next" title="读Paper|DeepFool算法简介">
+                <i class="fa fa-chevron-left"></i> 读Paper|DeepFool算法简介
               </a>
             
           </div>
@@ -437,8 +501,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/26/CMU-15645-Data-Storage-1/" rel="prev" title="CMU 15645 - Data Storage(1)">
-                CMU 15645 - Data Storage(1) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/26/Graph-Embedding实验/" rel="prev" title="Graph Embedding实验">
+                Graph Embedding实验 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法简介"><span class="nav-number">2.</span> <span class="nav-text">算法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分类问题"><span class="nav-number">2.1.</span> <span class="nav-text">二分类问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多分类问题"><span class="nav-number">2.2.</span> <span class="nav-text">多分类问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-存储"><span class="nav-number">1.</span> <span class="nav-text">1 存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-面向磁盘的DBMS概括"><span class="nav-number">2.</span> <span class="nav-text">2 面向磁盘的DBMS概括</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DBMS-与-OS-的对比"><span class="nav-number">3.</span> <span class="nav-text">3 DBMS 与 OS 的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-数据库页-Database-Pages"><span class="nav-number">4.</span> <span class="nav-text">4 数据库页(Database Pages)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-数据库堆-Database-Heap"><span class="nav-number">5.</span> <span class="nav-text">5 数据库堆(Database Heap)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-页布局"><span class="nav-number">6.</span> <span class="nav-text">6 页布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-元祖布局"><span class="nav-number">7.</span> <span class="nav-text">7 元祖布局</span></a></li></ol></div>
             
 
           </div>
@@ -742,9 +806,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/08/27/读Paper-DeepFool算法简介/';
-          this.page.identifier = '2019/08/27/读Paper-DeepFool算法简介/';
-          this.page.title = '读Paper|DeepFool算法简介';
+          this.page.url = 'http://yoursite.com/2019/12/26/CMU-15645-Data-Storage-1/';
+          this.page.identifier = '2019/12/26/CMU-15645-Data-Storage-1/';
+          this.page.title = 'CMU 15645 - Data Storage(1)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://amesora.disqus.com/embed.js';

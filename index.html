@@ -281,6 +281,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/15/CMU-15645-Data-Storage-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="青檀">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="T's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/15/CMU-15645-Data-Storage-2/" itemprop="url">CMU 15645 - Data Storage(2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T23:59:35+08:00">
+                2020-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database-System/" itemprop="url" rel="index">
+                    <span itemprop="name">Database System</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h2><p>元祖中可以存储的四种主要类型包含：整数(integers)、可变精度数(variable precision numbers)、定点数(fixed point precision numbers)、变长值(variable length values)、日期/时间。</p>
+<p><strong>Integers</strong>:</p>
+<ul>
+<li>大多数DBMS使用原生C/C++类型</li>
+<li>例如：INTEGER, BIGINT, SMALLINT, TINYINT.</li>
+</ul>
+<p><strong>Variable Precision Numbers</strong>：</p>
+<ul>
+<li>部分使用原生C/C++类型(IEEE-754标准)</li>
+<li>例如：FLOAT, REAL.</li>
+</ul>
+<p><strong>Fixed Point Precision Numbers</strong>:</p>
+<ul>
+<li>任意精度和规模的数值类型。变长二进制表示，附带元信息（告诉系统哪里是小数）</li>
+<li>通常当舍入错误不可接受时使用它。</li>
+<li>例如：NUMERIC,DECIMAL.</li>
+</ul>
+<p><strong>Variable Length Data</strong>:</p>
+<ul>
+<li>任意长度的字节数组</li>
+<li>具有头部，记录字符串的长度。</li>
+<li>大多数DBMS不允许元祖超过页的大小，所以可以通过写入索引的方式解决这个问题。</li>
+<li>有些系统允许将这些大的值存储在外部文件中，元祖包含指向该文件的指针。</li>
+<li>例如：VARCHAR,VARBINARY,TEXT,BLOB.</li>
+</ul>
+<p><strong>Dates and Times</strong>:</p>
+<ul>
+<li>例如：TIME,DATE,TIMESTAMP.</li>
+</ul>
+<p><strong>System Catalogs</strong>:</p>
+<ul>
+<li>为了让DBMS读取这些值，它维护了一个内部日志文件，记录有关数据库的元信息，包括数据库含有的表和列，以及它们的类型和存储顺序。</li>
+</ul>
+<h2 id="工作负载"><a href="#工作负载" class="headerlink" title="工作负载"></a>工作负载</h2><p><strong>OLTP: On-line Transaction Processing</strong></p>
+<ul>
+<li>Fast, short running operation</li>
+<li>Queries operate on single entity at a time</li>
+<li>More writes than reads</li>
+<li>Repetitive operations</li>
+<li>Usually the kind of application that people build first</li>
+<li>Example:  User invocations of Amazon.  They can add things to their cart, they can make purchases,but the actions only affect their account.</li>
+</ul>
+<p><strong>OLAP: On-line Analyitical Processing</strong></p>
+<ul>
+<li>Long running, more complex queries</li>
+<li>Reads large portions of the database</li>
+<li>Exploratory queries</li>
+<li>Deriving new data from data collected on the OLTP side</li>
+<li>Example: Compute the five most bought items over a one month period for these geographical loca-tions.</li>
+</ul>
+<p><img src="/assets/cmu-ds3.png" alt="cmu-db3"></p>
+<h2 id="存储模型"><a href="#存储模型" class="headerlink" title="存储模型"></a>存储模型</h2><p>页存储元祖的方式有很多种。</p>
+<p><strong>N元存储模型 N-Ary Storage Model (NSM)</strong></p>
+<p>对于单一元祖，DBMS将它的属性存储在相邻位置。</p>
+<p>- </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/Effective-Modern-C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,7 +801,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/CMU 15645: Data Storage(1)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/CMU-15645-Data-Storage-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="青檀">
@@ -624,7 +820,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/26/CMU 15645: Data Storage(1)/" itemprop="url">CMU 15645 | Data Storage(1)</a></h1>
+                <a class="post-title-link" href="/2019/12/26/CMU-15645-Data-Storage-1/" itemprop="url">CMU 15645 - Data Storage(1)</a></h1>
         
 
         <div class="post-meta">
@@ -1360,7 +1556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
